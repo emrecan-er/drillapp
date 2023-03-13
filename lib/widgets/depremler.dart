@@ -5,6 +5,7 @@ import 'package:deprem/service/api/earthquake_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
 
 class Depremler extends StatelessWidget {
@@ -107,8 +108,15 @@ class Depremler extends StatelessWidget {
 
                     String formattedTime =
                         DateFormat('HH:mm').format(parsedDateTime);
-                    inspect(_earthquakeController.earthquakes[index]);
                     return DepremKart(
+                      closestAirports: _earthquakeController.earthquakes[index]
+                          ["location_properties"]["airports"],
+                      closestCities: _earthquakeController.earthquakes[index]
+                          ["location_properties"]["closestCities"],
+                      long: _earthquakeController.earthquakes[index]["geojson"]
+                          ["coordinates"][1],
+                      lat: _earthquakeController.earthquakes[index]["geojson"]
+                          ["coordinates"][0],
                       sehir: _earthquakeController.earthquakes[index]["title"],
                       buyukluk: _earthquakeController.earthquakes[index]["mag"]
                           .toString(),
@@ -139,7 +147,13 @@ class DepremKart extends StatelessWidget {
   late Color renk;
   late List closestCities;
   late List closestAirports;
+  double lat;
+  double long;
   DepremKart({
+    required this.closestAirports,
+    required this.closestCities,
+    required this.lat,
+    required this.long,
     required this.sehir,
     required this.buyukluk,
     required this.derinlik,
@@ -156,6 +170,7 @@ class DepremKart extends StatelessWidget {
       padding: const EdgeInsets.only(left: 8, right: 8, bottom: 8),
       child: GestureDetector(
         onTap: () {
+          inspect(closestAirports);
           _earthquakeController.closestAirports.clear();
           showModalBottomSheet(
             context: context,
@@ -165,10 +180,14 @@ class DepremKart extends StatelessWidget {
                   children: [
                     Container(
                       height: Get.height / 3,
-                      color: Colors.yellow,
+                      color: Colors.white,
                       width: Get.width,
-                      child: Text(
-                        'Maps Activity will be here',
+                      child: GoogleMap(
+                        mapType: MapType.normal,
+                        initialCameraPosition: CameraPosition(
+                          target: LatLng(long, lat),
+                          zoom: 12.151926040649414,
+                        ),
                       ),
                     ),
                     Row(
@@ -180,14 +199,26 @@ class DepremKart extends StatelessWidget {
                               'Closest Cities',
                               style: headerStyle(),
                             ),
-                            Text(
-                              '',
-                              style: infoStyle(),
+                            SizedBox(
+                              height: 100,
+                              width: 150,
+                              child: ListView.builder(
+                                itemCount: closestCities.length,
+                                itemBuilder: (context, index) {
+                                  return Text(
+                                    '-' + closestCities[index]["name"],
+                                    style: infoStyle(),
+                                  );
+                                },
+                              ),
                             )
                           ],
                         ),
                         Column(
                           children: [
+                            SizedBox(
+                              height: 10,
+                            ),
                             Text(
                               'Closest Airports',
                               style: headerStyle(),
@@ -196,16 +227,13 @@ class DepremKart extends StatelessWidget {
                               height: 100,
                               width: 150,
                               child: ListView.builder(
+                                itemCount: closestAirports.length,
                                 itemBuilder: (context, index) {
                                   return Text(
-                                    '-' +
-                                        _earthquakeController
-                                            .closestAirports.value[index],
+                                    '-' + closestAirports[index]["name"],
                                     style: infoStyle(),
                                   );
                                 },
-                                itemCount: _earthquakeController
-                                    .closestAirports.length,
                               ),
                             )
                           ],
