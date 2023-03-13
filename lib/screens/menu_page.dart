@@ -1,15 +1,17 @@
 import 'package:deprem/constants/constants.dart';
+import 'package:deprem/service/api/earthquake_controller.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
 class MenuPage extends StatelessWidget {
-  const MenuPage({super.key});
+  final EarthquakeController _earthquakeController =
+      Get.put(EarthquakeController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kbackgroundColor,
+      backgroundColor: kMainColor,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -19,7 +21,7 @@ class MenuPage extends StatelessWidget {
             child: Text(
               'Welcome Emrecan',
               style: TextStyle(
-                color: kMainColor,
+                color: kbackgroundColor,
                 fontFamily: 'VarelaRound',
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
@@ -49,6 +51,11 @@ class MenuPage extends StatelessWidget {
             onTap: () {},
             icon: Icons.settings,
           ),
+          DrawerTile(
+            text: 'Bi\'Destek',
+            onTap: () {},
+            icon: Icons.help,
+          ),
           Spacer(),
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -56,12 +63,12 @@ class MenuPage extends StatelessWidget {
               onTap: () {},
               child: Container(
                 width: 100,
-                height: 50,
+                height: 40,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: kMainColor,
+                    color: kbackgroundColor,
                   ),
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(8),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -69,7 +76,7 @@ class MenuPage extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.logout,
-                        color: kMainColor,
+                        color: kbackgroundColor,
                       ),
                       SizedBox(
                         width: 10,
@@ -77,7 +84,7 @@ class MenuPage extends StatelessWidget {
                       Text(
                         'Logout',
                         style: TextStyle(
-                          color: kMainColor,
+                          color: kbackgroundColor,
                           fontFamily: 'VarelaRound',
                         ),
                       )
@@ -109,13 +116,13 @@ class DrawerTile extends StatelessWidget {
           style: TextStyle(
             fontFamily: 'VarelaRound',
             fontSize: 16,
-            color: kMainColor,
+            color: kbackgroundColor,
           ),
         ),
         onTap: onTap,
         leading: Icon(
           icon,
-          color: kMainColor,
+          color: kbackgroundColor,
         ),
       ),
     );

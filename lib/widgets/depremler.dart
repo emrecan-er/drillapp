@@ -1,13 +1,14 @@
+import 'dart:developer';
+
 import 'package:deprem/constants/constants.dart';
+import 'package:deprem/service/api/earthquake_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class Depremler extends StatelessWidget {
-  const Depremler({super.key});
+  EarthquakeController _earthquakeController = Get.put(EarthquakeController());
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +19,15 @@ class Depremler extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             AppBar(
+              actions: [
+                IconButton(
+                    onPressed: () {
+                      _earthquakeController.apiCall();
+                    },
+                    icon: Icon(
+                      Icons.refresh,
+                    ))
+              ],
               title: Text(
                 'RescueMe',
                 style: TextStyle(
@@ -36,7 +46,7 @@ class Depremler extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
               child: SizedBox(
                 height: 30,
                 child: TextField(
@@ -53,7 +63,7 @@ class Depremler extends StatelessWidget {
                       Icons.search,
                       color: kMainColor,
                     ),
-                    label: Text('asdas'),
+                    label: Text('Search'),
                     labelStyle: const TextStyle(
                       color: Colors.grey,
                       fontFamily: 'VarelaRound',
@@ -63,54 +73,56 @@ class Depremler extends StatelessWidget {
                 ),
               ),
             ),
-            DepremKart(
-              sehir: 'K.MARAS',
-              zaman: '25/02/2023',
-              derinlik: '12.8',
-              buyukluk: '2.0',
-              renk: Colors.green,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.info_outline_rounded,
+                    size: 12,
+                    color: Colors.grey,
+                  ),
+                  Text(
+                    'Press the card for more information.',
+                    style: TextStyle(
+                      fontFamily: 'VarelaRound',
+                      color: Colors.grey,
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
+              ),
             ),
-            DepremKart(
-              sehir: 'K.MARAS',
-              zaman: '25/02/2023',
-              derinlik: '4.5',
-              buyukluk: '4.6',
-              renk: Colors.blue,
-            ),
-            DepremKart(
-              sehir: 'ISTANBUL',
-              zaman: '12/07/2023',
-              derinlik: '7.4',
-              buyukluk: '?',
-              renk: Colors.red,
-            ),
-            DepremKart(
-              sehir: 'HATAY',
-              zaman: '25/02/2023',
-              derinlik: '4.1',
-              buyukluk: '2.1',
-              renk: Colors.green,
-            ),
-            DepremKart(
-              sehir: 'TEST',
-              zaman: 'TEST',
-              derinlik: 'TEST ',
-              buyukluk: 'TEST',
-              renk: Colors.red,
-            ),
-            DepremKart(
-              sehir: 'TEST',
-              zaman: '25/02/2023',
-              derinlik: '12.8',
-              buyukluk: '2.0',
-              renk: Colors.blue,
-            ),
-            DepremKart(
-              sehir: 'K.MARAS',
-              zaman: '25/02/2023',
-              derinlik: '12.8',
-              buyukluk: '2.0',
-              renk: Colors.green,
+            Container(
+              height: Get.height,
+              child: Obx(
+                () => ListView.builder(
+                  itemCount: _earthquakeController.earthquakes.length,
+                  itemBuilder: (context, index) {
+                    DateTime parsedDate = DateTime.parse(_earthquakeController
+                        .earthquakes[index]["date"]
+                        .replaceAll('.', '-'));
+                    DateTime parsedDateTime =
+                        DateTime.parse(parsedDate.toString());
+
+                    String formattedTime =
+                        DateFormat('HH:mm').format(parsedDateTime);
+                    inspect(_earthquakeController.earthquakes[index]);
+                    return DepremKart(
+                      sehir: _earthquakeController.earthquakes[index]["title"],
+                      buyukluk: _earthquakeController.earthquakes[index]["mag"]
+                          .toString(),
+                      derinlik: _earthquakeController.earthquakes[index]
+                              ["depth"]
+                          .toString(),
+                      renk: _earthquakeController.changeColor(
+                        _earthquakeController.earthquakes[index]["mag"],
+                      ),
+                      zaman: formattedTime,
+                    );
+                  },
+                ),
+              ),
             ),
           ],
         ),
@@ -125,43 +137,79 @@ class DepremKart extends StatelessWidget {
   late String derinlik;
   late String buyukluk;
   late Color renk;
-  DepremKart(
-      {required this.sehir,
-      required this.buyukluk,
-      required this.derinlik,
-      required this.renk,
-      required this.zaman});
+  late List closestCities;
+  late List closestAirports;
+  DepremKart({
+    required this.sehir,
+    required this.buyukluk,
+    required this.derinlik,
+    required this.renk,
+    required this.zaman,
+  });
 
   @override
   Widget build(BuildContext context) {
+    EarthquakeController _earthquakeController =
+        Get.put(EarthquakeController());
+
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(left: 8, right: 8, bottom: 8),
       child: GestureDetector(
         onTap: () {
+          _earthquakeController.closestAirports.clear();
           showModalBottomSheet(
             context: context,
             builder: (context) {
               return Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                ),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
+                      height: Get.height / 3,
+                      color: Colors.yellow,
                       width: Get.width,
                       child: Text(
                         'Maps Activity will be here',
                       ),
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Column(
                           children: [
-                            Text('data'),
+                            Text(
+                              'Closest Cities',
+                              style: headerStyle(),
+                            ),
+                            Text(
+                              '',
+                              style: infoStyle(),
+                            )
                           ],
-                        )
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              'Closest Airports',
+                              style: headerStyle(),
+                            ),
+                            SizedBox(
+                              height: 100,
+                              width: 150,
+                              child: ListView.builder(
+                                itemBuilder: (context, index) {
+                                  return Text(
+                                    '-' +
+                                        _earthquakeController
+                                            .closestAirports.value[index],
+                                    style: infoStyle(),
+                                  );
+                                },
+                                itemCount: _earthquakeController
+                                    .closestAirports.length,
+                              ),
+                            )
+                          ],
+                        ),
                       ],
                     )
                   ],
@@ -172,119 +220,95 @@ class DepremKart extends StatelessWidget {
         },
         child: Container(
           width: Get.width,
-          height: Get.height / 8,
+          height: Get.height / 5,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(8),
           ),
           child: Container(
+            width: Get.width,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Container(
-                      width: 20,
-                      height: Get.height / 8,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(8),
-                          bottomLeft: Radius.circular(8),
-                        ),
-                        color: renk,
+                    Expanded(
+                      flex: 1,
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 10,
+                            height: Get.height / 5,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(8),
+                                bottomLeft: Radius.circular(8),
+                              ),
+                              color: renk,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    Column(
-                      children: [
-                        SizedBox(
-                          width: Get.width - 40,
-                          height: 80,
-                          child: Row(
+                    Expanded(
+                      flex: 15,
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  children: [
-                                    Spacer(),
-                                    Text(
-                                      'Şehir',
-                                      style: headerStyle(),
-                                    ),
-                                    Spacer(),
-                                    Text(
-                                      sehir,
-                                      style: infoStyle(),
-                                    ),
-                                    Spacer(),
-                                  ],
-                                ),
+                              Text(
+                                sehir,
+                                style: infoStyle().copyWith(
+                                    fontSize: 14, fontWeight: FontWeight.bold),
                               ),
-                              Spacer(),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  children: [
-                                    Spacer(),
-                                    Text(
-                                      'Zaman',
-                                      style: headerStyle(),
-                                    ),
-                                    Spacer(),
-                                    Text(
-                                      zaman,
-                                      style: infoStyle(),
-                                    ),
-                                    Spacer(),
-                                    Spacer(),
-                                  ],
-                                ),
-                              ),
-                              Spacer(),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  children: [
-                                    Spacer(),
-                                    Text(
-                                      'Derinlik',
-                                      style: headerStyle(),
-                                    ),
-                                    Spacer(),
-                                    Text(
-                                      derinlik + 'km',
-                                      style: infoStyle(),
-                                    ),
-                                    Spacer(),
-                                    Spacer(),
-                                  ],
-                                ),
-                              ),
-                              Spacer(),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  children: [
-                                    Spacer(),
-                                    Text(
-                                      'Büyüklük',
-                                      style: headerStyle(),
-                                    ),
-                                    Spacer(),
-                                    Text(
-                                      buyukluk,
-                                      style: infoStyle(),
-                                    ),
-                                    Spacer(),
-                                    Spacer(),
-                                  ],
-                                ),
-                              ),
-                              Spacer(),
                             ],
                           ),
-                        ),
-                      ],
+                          SizedBox(
+                            height: 30,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Column(
+                                children: [
+                                  Text(
+                                    'Depth',
+                                    style: headerStyle(),
+                                  ),
+                                  Text(
+                                    derinlik + ' km',
+                                    style: infoStyle(),
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                children: [
+                                  Text(
+                                    'Magnitude',
+                                    style: headerStyle(),
+                                  ),
+                                  Text(
+                                    buyukluk,
+                                    style: infoStyle(),
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                children: [
+                                  Text(
+                                    'Time',
+                                    style: headerStyle(),
+                                  ),
+                                  Text(
+                                    zaman,
+                                    style: infoStyle(),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 )

@@ -13,5 +13,5 @@ TextStyle infoStyle() {
 }
 
 TextStyle headerStyle() {
-  return TextStyle(color: Colors.grey, fontFamily: 'VarelaRound');
+  return TextStyle(color: Colors.grey, fontFamily: 'VarelaRound', fontSize: 13);
 }
