@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:deprem/screens/home_page.dart';
 import 'package:deprem/screens/main_screen.dart';
 import 'package:deprem/screens/register_page.dart';
-import 'package:deprem/screens/wave_clipper.dart';
+import 'package:deprem/widgets/wave_clipper.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';

@@ -1,5 +1,5 @@
-import 'package:deprem/constants.dart';
-import 'package:deprem/screens/depremler.dart';
+import 'package:deprem/constants/constants.dart';
+import 'package:deprem/widgets/depremler.dart';
 import 'package:deprem/screens/emergency_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
