@@ -33,7 +33,7 @@ class DepremKart extends StatelessWidget {
         Get.put(EarthquakeController());
 
     return Padding(
-      padding: const EdgeInsets.only(left: 8, right: 8, bottom: 8),
+      padding: const EdgeInsets.only(left: 8, right: 8, bottom: 8, top: 8),
       child: GestureDetector(
         onTap: () {
           _earthquakeController.closestAirports.clear();
@@ -129,7 +129,7 @@ class DepremKart extends StatelessWidget {
                       child: Column(
                         children: [
                           Container(
-                            width: 10,
+                            width: 5,
                             height: Get.height / 5,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.only(

@@ -1,35 +1,60 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:deprem/constants/constants.dart';
-import 'package:deprem/service/api/earthquake_controller.dart';
+import 'package:deprem/screens/bi_destek.dart';
+import 'package:deprem/service/api/auth_service.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-class MenuPage extends StatelessWidget {
-  final EarthquakeController _earthquakeController =
-      Get.put(EarthquakeController());
+import '../controller/auth_controller.dart';
 
+class MenuPage extends StatelessWidget {
+  AuthService _authService = AuthService();
+  final AuthController _authController = Get.put(AuthController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kMainColor,
+      backgroundColor: kMainColor.withOpacity(0.9),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Spacer(),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'Welcome Emrecan',
-              style: TextStyle(
-                color: kbackgroundColor,
-                fontFamily: 'VarelaRound',
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
+            child: StreamBuilder(
+              stream:
+                  _authService.getUser(_authController.loggedInUserUid.value),
+              builder: (context, snapshot) {
+                return !snapshot.hasData
+                    ? CircularProgressIndicator()
+                    : Container(
+                        height: 100,
+                        width: Get.width,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: snapshot.data?.docs.length,
+                            itemBuilder: (context, index) {
+                              DocumentSnapshot documentSnapshot =
+                                  snapshot.data!.docs[index];
+
+                              return Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Welcome ' + documentSnapshot['name'],
+                                    style: TextStyle(
+                                      fontFamily: 'VarelaRound',
+                                      color: kbackgroundColor,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  )
+                                ],
+                              );
+                            }),
+                      );
+              },
             ),
-          ),
-          SizedBox(
-            height: 40,
           ),
           DrawerTile(
             text: 'News',
@@ -53,7 +78,9 @@ class MenuPage extends StatelessWidget {
           ),
           DrawerTile(
             text: 'Bi\'Destek',
-            onTap: () {},
+            onTap: () {
+              Get.to(BiDestek());
+            },
             icon: Icons.help,
           ),
           Spacer(),

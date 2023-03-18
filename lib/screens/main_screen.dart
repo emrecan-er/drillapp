@@ -2,9 +2,7 @@ import 'package:deprem/constants/constants.dart';
 import 'package:deprem/widgets/depremler.dart';
 import 'package:deprem/screens/emergency_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class MainScreen extends StatelessWidget {

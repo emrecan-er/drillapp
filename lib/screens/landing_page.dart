@@ -1,5 +1,5 @@
 import 'package:deprem/constants/constants.dart';
-import 'package:deprem/screens/main_screen.dart';
+import 'package:deprem/screens/login_page.dart';
 import 'package:deprem/widgets/slider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -20,21 +20,20 @@ class _LandingState extends State<LandingPage> {
   List<Widget> _pages = [
     SliderPage(
       description:
-          'buralara bir şeyler yazılacak aaaa aaaaa aaaaaa \n aaaa aaaaaa aaa aaaaa',
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacus leo, porta sit amet libero quis, scelerisque blandit libero. Etiam in leo erat. Mauris rhoncus commodo elementum. Vivamus tristique urna ante',
       image: "assets/1.png",
-      title: 'Depremden Önce',
+      title: 'We are with you !',
     ),
     SliderPage(
       description:
-          'buralara bir şeyler yazılacak aaaa aaaaa aaaaaa \n aaaa aaaaaa aaa aaaaa',
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacus leo, porta sit amet libero quis, scelerisque blandit libero. Etiam in leo erat. Mauris rhoncus commodo elementum. Vivamus tristique urna ante, a feugiat ante condimentum id',
       image: "assets/2.png",
-      title: 'Deprem Sırasında',
+      title: 'Track Earthquakes',
     ),
     SliderPage(
-      description:
-          'buralara bir şeyler yazılacak aaaa aaaaa aaaaaa \n aaaa aaaaaa aaa aaaaa',
+      description: 'Lorem ipsum dolor sit amet, ',
       image: "assets/3.png",
-      title: 'Depremden Sonrası',
+      title: 'Prepare for Disasters',
     ),
   ];
 
@@ -76,9 +75,8 @@ class _LandingState extends State<LandingPage> {
                             EdgeInsets.symmetric(horizontal: 5, vertical: 30),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
-                          color: (index == _currentPage)
-                              ? kMainColor
-                              : kMainColor.withOpacity(0.5),
+                          color:
+                              (index == _currentPage) ? kMainColor : kMainColor,
                         ),
                       );
                     },
@@ -91,12 +89,12 @@ class _LandingState extends State<LandingPage> {
                           padding: const EdgeInsets.only(
                               top: 64, right: 32, left: 32),
                           child: SlideAction(
-                            animationDuration: Duration(milliseconds: 500),
+                            animationDuration: Duration(milliseconds: 700),
                             submittedIcon: Icon(
                               FontAwesomeIcons.heartPulse,
                               color: Colors.white,
                             ),
-                            text: 'Başlayalım',
+                            text: 'Let\'s Start',
                             textStyle: TextStyle(
                               color: Colors.white,
                               fontFamily: 'VarelaRound',
@@ -109,12 +107,12 @@ class _LandingState extends State<LandingPage> {
                               color: kMainColor,
                             ),
                             sliderButtonIconPadding: 10,
-                            outerColor: kMainColor.withOpacity(0.8),
+                            outerColor: kMainColor,
                             sliderButtonIconSize: 14,
                             height: Get.height / 12,
                             key: _key,
                             onSubmit: () {
-                              Get.off(MainScreen());
+                              Get.off(LoginPage());
                             },
                           ),
                         )
@@ -122,7 +120,7 @@ class _LandingState extends State<LandingPage> {
                           icon: Icon(
                             Icons.navigate_next,
                             size: 50,
-                            color: kMainColor.withOpacity(0.5),
+                            color: kMainColor,
                           ),
                           onPressed: () {
                             _controller.nextPage(

@@ -47,9 +47,12 @@ class SliderPage extends StatelessWidget {
         SizedBox(
           height: 20,
         ),
-        Text(
-          description,
-          style: TextStyle(fontFamily: 'VarelaRound', color: Colors.grey),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Text(
+            description,
+            style: TextStyle(fontFamily: 'VarelaRound', color: Colors.grey),
+          ),
         ),
         SizedBox(
           height: 30,

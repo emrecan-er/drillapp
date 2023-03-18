@@ -1,11 +1,8 @@
-import 'dart:developer';
-
 import 'package:deprem/constants/constants.dart';
 import 'package:deprem/service/api/earthquake_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
 
 import 'earthquake_card.dart';
@@ -99,38 +96,46 @@ class Depremler extends StatelessWidget {
             Container(
               height: Get.height,
               child: Obx(
-                () => ListView.builder(
-                  itemCount: _earthquakeController.earthquakes.length,
-                  itemBuilder: (context, index) {
-                    DateTime parsedDate = DateTime.parse(_earthquakeController
-                        .earthquakes[index]["date"]
-                        .replaceAll('.', '-'));
-                    DateTime parsedDateTime =
-                        DateTime.parse(parsedDate.toString());
-
-                    String formattedTime =
-                        DateFormat('HH:mm').format(parsedDateTime);
-                    return DepremKart(
-                      closestAirports: _earthquakeController.earthquakes[index]
-                          ["location_properties"]["airports"],
-                      closestCities: _earthquakeController.earthquakes[index]
-                          ["location_properties"]["closestCities"],
-                      long: _earthquakeController.earthquakes[index]["geojson"]
-                          ["coordinates"][1],
-                      lat: _earthquakeController.earthquakes[index]["geojson"]
-                          ["coordinates"][0],
-                      sehir: _earthquakeController.earthquakes[index]["title"],
-                      buyukluk: _earthquakeController.earthquakes[index]["mag"]
-                          .toString(),
-                      derinlik: _earthquakeController.earthquakes[index]
-                              ["depth"]
-                          .toString(),
-                      renk: _earthquakeController.changeColor(
-                        _earthquakeController.earthquakes[index]["mag"],
-                      ),
-                      zaman: formattedTime,
-                    );
+                () => RefreshIndicator(
+                  onRefresh: () {
+                    return _earthquakeController.apiCall();
                   },
+                  child: ListView.builder(
+                    itemCount: _earthquakeController.earthquakes.length,
+                    itemBuilder: (context, index) {
+                      DateTime parsedDate = DateTime.parse(_earthquakeController
+                          .earthquakes[index]["date"]
+                          .replaceAll('.', '-'));
+                      DateTime parsedDateTime =
+                          DateTime.parse(parsedDate.toString());
+
+                      String formattedTime =
+                          DateFormat('HH:mm').format(parsedDateTime);
+                      return DepremKart(
+                        closestAirports:
+                            _earthquakeController.earthquakes[index]
+                                ["location_properties"]["airports"],
+                        closestCities: _earthquakeController.earthquakes[index]
+                            ["location_properties"]["closestCities"],
+                        long: _earthquakeController.earthquakes[index]
+                            ["geojson"]["coordinates"][1],
+                        lat: _earthquakeController.earthquakes[index]["geojson"]
+                            ["coordinates"][0],
+                        sehir: _earthquakeController.earthquakes[index]
+                            ["title"],
+                        buyukluk: _earthquakeController.earthquakes[index]
+                                ["mag"]
+                            .toString(),
+                        derinlik: _earthquakeController.earthquakes[index]
+                                ["depth"]
+                            .toString(),
+                        renk: _earthquakeController.changeColor(
+                          _earthquakeController.earthquakes[index]["mag"],
+                        ),
+                        zaman: formattedTime,
+                      );
+                    },
+                  ),
                 ),
               ),
             ),

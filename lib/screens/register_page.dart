@@ -1,12 +1,15 @@
-import 'package:deprem/screens/login_page.dart';
+import 'package:deprem/constants/constants.dart';
+import 'package:deprem/controller/auth_controller.dart';
+import 'package:deprem/service/api/auth_service.dart';
+import 'package:deprem/widgets/custom_form_field.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:nice_buttons/nice_buttons.dart';
 
 class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
+  final AuthController _authController = Get.put(AuthController());
+  AuthService _authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -16,45 +19,21 @@ class RegisterPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              child: Column(children: [
-                Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        FaIcon(
-                          FontAwesomeIcons.exclamation,
-                          color: Colors.black,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        FaIcon(
-                          FontAwesomeIcons.exclamation,
-                          color: Colors.black,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        FaIcon(
-                          FontAwesomeIcons.exclamation,
-                          color: Colors.black,
-                        ),
-                      ],
-                    )),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    'We will ask for your full name and address to share with Twitter and authorized institutions in case of a disaster. Your personal information that you share with us will be protected within the framework of the Personal Data Protection Law. There will be no violation of rights. Please make sure to enter your address information correctly, especially.',
+            Padding(
+              padding: const EdgeInsets.all(32.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Create an Account',
                     style: TextStyle(
                       fontFamily: 'VarelaRound',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
                     ),
                   ),
-                )
-              ]),
-              height: 200,
-              color: Colors.red.withOpacity(0.5),
+                ],
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -66,98 +45,65 @@ class RegisterPage extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Name :',
-                          style: TextStyle(
-                              fontFamily: 'VarelaRound', fontSize: 14),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        SizedBox(
-                          width: Get.width / 1.4,
-                          child: CustomTextField(),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Divider(
-                    thickness: 0.2,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Surname :',
-                          style: TextStyle(
-                              fontFamily: 'VarelaRound', fontSize: 14),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        SizedBox(
-                          width: Get.width / 1.5,
-                          child: CustomTextField(),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Divider(
-                    thickness: 0.1,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Adress :',
-                          style: TextStyle(
-                              fontFamily: 'VarelaRound', fontSize: 14),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        SizedBox(
-                          width: Get.width / 1.4,
-                          child: CustomTextField(),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Divider(
-                    thickness: 0.2,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Mail :',
-                          style: TextStyle(
-                              fontFamily: 'VarelaRound', fontSize: 14),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        SizedBox(
-                          width: Get.width / 1.4,
-                          child: CustomTextField(),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+            CustomFormField(
+              lines: 1,
+              type: TextInputType.name,
+              icon: Icons.person,
+              hint: 'Name',
+              obscureText: false,
+              onChanged: (input) {
+                _authController.registerName.value = input;
+              },
+            ),
+            CustomFormField(
+              lines: 1,
+              type: TextInputType.emailAddress,
+              icon: Icons.person,
+              hint: 'Surname',
+              obscureText: false,
+              onChanged: (input) {
+                _authController.registerSurname.value = input;
+              },
+            ),
+            CustomFormField(
+              lines: 1,
+              type: TextInputType.number,
+              icon: Icons.numbers,
+              hint: 'Age',
+              obscureText: false,
+              onChanged: (input) {
+                _authController.registerAge.value = input;
+              },
+            ),
+            CustomFormField(
+              lines: 3,
+              type: TextInputType.name,
+              icon: Icons.home,
+              hint: '\nAddress',
+              obscureText: false,
+              onChanged: (input) {
+                _authController.registerAddress.value = input;
+              },
+            ),
+            CustomFormField(
+              lines: 1,
+              type: TextInputType.emailAddress,
+              icon: Icons.mail,
+              hint: 'E-Mail Address',
+              obscureText: false,
+              onChanged: (input) {
+                _authController.registerEmail.value = input;
+              },
+            ),
+            CustomFormField(
+              lines: 1,
+              type: TextInputType.emailAddress,
+              icon: Icons.mail,
+              hint: 'Password',
+              obscureText: true,
+              onChanged: (input) {
+                _authController.registerPassword.value = input;
+              },
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -180,17 +126,38 @@ class RegisterPage extends StatelessWidget {
                                 fontSize: 13),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                // navigate to desired screen
+                                print('asd');
+                                showDialog(
+                                    context: context,
+                                    builder: ((context) {
+                                      return AlertDialog(
+                                        title: Text('Legal Consent'),
+                                        content: Column(
+                                          children: [
+                                            Text(
+                                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus, orci id lobortis auctor, ante magna semper odio, sed pulvinar nisi turpis eget sem. Morbi porttitor aliquam metus, ut feugiat ipsum aliquet vitae. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam pretium justo vitae lorem dictum, ut feugiat mi convallis. Mauris dui nisi, imperdiet vel odio id, porttitor mattis justo. Duis dapibus lorem enim. Donec placerat, enim nec pulvinar faucibus, dui ex suscipit dui, id consectetur eros orci id mauris. Nulla ac tincidunt magna, vel egestas tortor. Suspendisse dictum mauris id consequat feugiat. Aenean eu libero sit amet risus facilisis ultricies. Aenean dictum ex mauris, vitae congue magna sagittis sed. Integer sodales auctor molestie. Aliquam non eros nisi. Ut accumsan id ante id finibus.'),
+                                          ],
+                                        ),
+                                      );
+                                    }));
                               }),
                       ],
                     ),
                   ),
                 ),
-                Checkbox(
-                  value: true,
-                  onChanged: (value) {},
-                  activeColor: Colors.red,
-                ),
+                Obx(
+                  () => Checkbox(
+                    side: BorderSide(
+                      width: 2,
+                      color: kMainColor,
+                    ),
+                    value: _authController.acceptedTerms.value,
+                    onChanged: (value) {
+                      _authController.acceptedTerms.value = value!;
+                    },
+                    activeColor: Colors.red,
+                  ),
+                )
               ],
             ),
             Center(
@@ -203,6 +170,23 @@ class RegisterPage extends StatelessWidget {
                 borderRadius: 30,
                 gradientOrientation: GradientOrientation.Horizontal,
                 onTap: (finish) {
+                  if (_authController.acceptedTerms.value == true) {
+                    _authService.createPerson(
+                      _authController.registerEmail.value,
+                      _authController.registerPassword.value,
+                      _authController.registerName.value,
+                      _authController.registerSurname.value,
+                      _authController.registerAge.value,
+                      _authController.registerAddress.value,
+                      _authController.acceptedTerms.value,
+                    );
+                    Navigator.pop(context);
+                  } else {
+                    Get.snackbar(
+                      'Error',
+                      'Please Accept the Terms',
+                    );
+                  }
                   print('On tap called');
                 },
                 child: Text(
@@ -215,5 +199,12 @@ class RegisterPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  TextStyle RegisterStyle() {
+    return TextStyle(
+        fontFamily: 'VarelaRound',
+        fontSize: 12,
+        color: kMainColor.withOpacity(0.5));
   }
 }

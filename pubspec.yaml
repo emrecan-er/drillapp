@@ -44,8 +44,13 @@ dependencies:
   nice_buttons: ^0.0.2
   flutter_zoom_drawer: ^3.0.4+1
   http: ^0.13.5
-  intl: ^0.18.0
   google_maps_flutter: ^2.2.5
+  dart_twitter_api: ^0.5.8
+  audioplayers: ^1.0.1
+  cloud_firestore: ^4.4.5
+  firebase_core: ^2.8.0
+  firebase_auth: ^4.3.0
+  
 
 
 dev_dependencies:

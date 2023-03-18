@@ -9,6 +9,7 @@ class EarthquakeController extends GetxController {
   var earthquakes = [].obs;
   var cardColor = Colors.red.obs;
   var closestAirports = [].obs;
+  var earthquakeCount = 15.obs;
   var closestCities = [].obs;
   apiCall() async {
     final response = await http.get(
@@ -24,7 +25,7 @@ class EarthquakeController extends GetxController {
   MaterialColor changeColor(var mag) {
     if (mag >= 0 && mag < 3) {
       return Colors.green;
-    } else if (mag >= 3 && mag < 5.5) {
+    } else if (mag >= 3 && mag < 4) {
       return Colors.orange;
     } else {
       return Colors.red;
