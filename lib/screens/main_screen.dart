@@ -1,4 +1,5 @@
 import 'package:deprem/constants/constants.dart';
+import 'package:deprem/screens/life_triangle.dart';
 import 'package:deprem/widgets/depremler.dart';
 import 'package:deprem/screens/emergency_page.dart';
 import 'package:flutter/material.dart';
@@ -17,19 +18,9 @@ class MainScreen extends StatelessWidget {
         context,
         controller: _controller,
         screens: [
-          Depremler(),
+          Earthquakes(),
           EmergencyPage(),
-          SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 40,
-                )
-              ],
-            ),
-          ),
+          LifeTriangle(),
         ],
         items: navBarsItems(),
         confineInSafeArea: true,
@@ -81,8 +72,8 @@ List<PersistentBottomNavBarItem> navBarsItems() {
       inactiveColorPrimary: Colors.grey,
     ),
     PersistentBottomNavBarItem(
-      icon: Icon(Icons.newspaper),
-      title: ("News"),
+      icon: Icon(Icons.healing),
+      title: ("Life Triangle"),
       activeColorPrimary: kMainColor,
       inactiveColorPrimary: Colors.grey,
     ),

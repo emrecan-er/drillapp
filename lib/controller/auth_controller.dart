@@ -11,4 +11,5 @@ class AuthController extends GetxController {
   var loginPassword = ''.obs;
   var loggedInUserUid = ''.obs;
   var registerSurname = ''.obs;
+  var currentUserAddress = ''.obs;
 }

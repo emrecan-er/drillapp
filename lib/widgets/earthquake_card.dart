@@ -1,3 +1,4 @@
+import 'package:deprem/screens/earthquake_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -13,8 +14,8 @@ class DepremKart extends StatelessWidget {
   late Color renk;
   late List closestCities;
   late List closestAirports;
-  double lat;
-  double long;
+  var lat;
+  var long;
   DepremKart({
     required this.closestAirports,
     required this.closestCities,
@@ -37,79 +38,10 @@ class DepremKart extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           _earthquakeController.closestAirports.clear();
-          showModalBottomSheet(
-            context: context,
-            builder: (context) {
-              return Container(
-                child: Column(
-                  children: [
-                    Container(
-                      height: Get.height / 3,
-                      color: Colors.white,
-                      width: Get.width,
-                      child: GoogleMap(
-                        mapType: MapType.normal,
-                        initialCameraPosition: CameraPosition(
-                          target: LatLng(long, lat),
-                          zoom: 12.151926040649414,
-                        ),
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Column(
-                          children: [
-                            Text(
-                              'Closest Cities',
-                              style: headerStyle(),
-                            ),
-                            SizedBox(
-                              height: 100,
-                              width: 150,
-                              child: ListView.builder(
-                                itemCount: closestCities.length,
-                                itemBuilder: (context, index) {
-                                  return Text(
-                                    '-' + closestCities[index]["name"],
-                                    style: infoStyle(),
-                                  );
-                                },
-                              ),
-                            )
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              'Closest Airports',
-                              style: headerStyle(),
-                            ),
-                            SizedBox(
-                              height: 100,
-                              width: 150,
-                              child: ListView.builder(
-                                itemCount: closestAirports.length,
-                                itemBuilder: (context, index) {
-                                  return Text(
-                                    '-' + closestAirports[index]["name"],
-                                    style: infoStyle(),
-                                  );
-                                },
-                              ),
-                            )
-                          ],
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              );
-            },
-          );
+          Get.to(EarthquakeDetails(
+            lat: lat,
+            long: long,
+          ));
         },
         child: Container(
           width: Get.width,

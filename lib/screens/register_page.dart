@@ -126,7 +126,6 @@ class RegisterPage extends StatelessWidget {
                                 fontSize: 13),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                print('asd');
                                 showDialog(
                                     context: context,
                                     builder: ((context) {

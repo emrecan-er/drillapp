@@ -138,7 +138,7 @@ class LoginPage extends StatelessWidget {
                   } else {
                     _authService.signIn(_authController.loginEmail.value,
                         _authController.loginPassword.value);
-                    Get.to(
+                    Get.off(
                       HomePage(),
                     );
                   }

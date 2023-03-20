@@ -50,6 +50,9 @@ dependencies:
   cloud_firestore: ^4.4.5
   firebase_core: ^2.8.0
   firebase_auth: ^4.3.0
+  awesome_dialog: ^3.0.2
+  simple_speed_dial: ^0.1.7
+  webview_flutter: ^3.0.4
   
 
 

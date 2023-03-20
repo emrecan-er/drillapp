@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:deprem/constants/constants.dart';
-import 'package:deprem/screens/bi_destek.dart';
+import 'package:deprem/screens/bi_destek/bi_destek.dart';
+import 'package:deprem/screens/building_inspection.dart';
 import 'package:deprem/service/api/auth_service.dart';
 import 'package:flutter/material.dart';
 
@@ -36,7 +37,8 @@ class MenuPage extends StatelessWidget {
                             itemBuilder: (context, index) {
                               DocumentSnapshot documentSnapshot =
                                   snapshot.data!.docs[index];
-
+                              _authController.currentUserAddress.value =
+                                  documentSnapshot['address'];
                               return Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -57,6 +59,13 @@ class MenuPage extends StatelessWidget {
             ),
           ),
           DrawerTile(
+            text: 'Bi\'Destek',
+            onTap: () {
+              Get.to(BiDestek());
+            },
+            icon: Icons.help,
+          ),
+          DrawerTile(
             text: 'News',
             onTap: () {},
             icon: Icons.newspaper,
@@ -68,20 +77,15 @@ class MenuPage extends StatelessWidget {
           ),
           DrawerTile(
             text: 'Building Inspection',
-            onTap: () {},
+            onTap: () {
+              Get.to(BuildingInspection());
+            },
             icon: Icons.house,
           ),
           DrawerTile(
             text: 'Settings',
             onTap: () {},
             icon: Icons.settings,
-          ),
-          DrawerTile(
-            text: 'Bi\'Destek',
-            onTap: () {
-              Get.to(BiDestek());
-            },
-            icon: Icons.help,
           ),
           Spacer(),
           Padding(

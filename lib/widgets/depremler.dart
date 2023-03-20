@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 
 import 'earthquake_card.dart';
 
-class Depremler extends StatelessWidget {
+class Earthquakes extends StatelessWidget {
   EarthquakeController _earthquakeController = Get.put(EarthquakeController());
 
   @override
@@ -29,7 +29,7 @@ class Depremler extends StatelessWidget {
                     ))
               ],
               title: Text(
-                'Disaster',
+                'Latest Earthquakes',
                 style: TextStyle(
                   fontFamily: 'VarelaRound',
                   fontSize: 15,
