@@ -35,7 +35,6 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
   slide_to_act: ^2.0.1
   get: ^4.6.5
   font_awesome_flutter: ^10.4.0
@@ -53,6 +52,9 @@ dependencies:
   awesome_dialog: ^3.0.2
   simple_speed_dial: ^0.1.7
   webview_flutter: ^3.0.4
+  calendar_date_picker2: ^0.4.6
+  day_night_time_picker: ^1.2.0+2
+
   
 
 
@@ -96,6 +98,10 @@ flutter:
     - family: VarelaRound
       fonts:
         - asset: assets/VarelaRound-Regular.ttf
+        
+    - family: AdriaGrotesk
+      fonts:
+        - asset:  assets/Adria Grotesk Medium Upright Italic.ttf          
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

@@ -1,5 +1,6 @@
 import 'package:deprem/constants/constants.dart';
-import 'package:deprem/screens/securing_furniture.dart';
+import 'package:deprem/screens/menu_screens/securing_furniture.dart';
+import 'package:deprem/widgets/wave_clipper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
@@ -10,43 +11,75 @@ class LifeTriangle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Life Triange',
-          style: TextStyle(
-            fontFamily: 'VarelaRound',
-            fontSize: 15,
-          ),
-        ),
-        centerTitle: true,
-        toolbarHeight: 40,
-        backgroundColor: kMainColor,
-        leading: IconButton(
-          onPressed: () {
-            ZoomDrawer.of(context)!.toggle();
-          },
-          icon: Icon(Icons.menu),
-        ),
-      ),
       backgroundColor: kbackgroundColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
+            AppBar(
+              title: Text(
+                'Life Triange',
+                style: TextStyle(
+                  fontFamily: 'VarelaRound',
+                  fontSize: 15,
+                ),
+              ),
+              elevation: 0,
+              centerTitle: true,
+              toolbarHeight: 40,
+              backgroundColor: kMainColor,
+              leading: IconButton(
+                onPressed: () {
+                  ZoomDrawer.of(context)!.toggle();
+                },
+                icon: Icon(Icons.menu),
+              ),
+            ),
+            ClipPath(
+              clipper: WaveClipper(),
+              child: Container(
+                padding: EdgeInsets.only(left: 40, top: 50, right: 20),
+                height: 250,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: kMainColor,
+                ),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Find Safe Place',
+                            style: TextStyle(
+                                fontFamily: 'VarelaRound',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                color: kbackgroundColor),
+                          )
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been ',
+                        style: TextStyle(
+                            fontFamily: 'VarelaRound',
+                            color: kbackgroundColor.withOpacity(0.6)),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
             SizedBox(
               height: 30,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
-                children: [
-                  Text(
-                    'Find Safe Place',
-                    style: TextStyle(
-                        fontFamily: 'VarelaRound',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
-                  )
-                ],
+                children: [],
               ),
             ),
             Padding(

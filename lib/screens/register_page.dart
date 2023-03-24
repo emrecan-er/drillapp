@@ -1,5 +1,6 @@
 import 'package:deprem/constants/constants.dart';
 import 'package:deprem/controller/auth_controller.dart';
+import 'package:deprem/controller/state_controller.dart';
 import 'package:deprem/service/api/auth_service.dart';
 import 'package:deprem/widgets/custom_form_field.dart';
 import 'package:flutter/gestures.dart';
@@ -10,26 +11,31 @@ import 'package:nice_buttons/nice_buttons.dart';
 class RegisterPage extends StatelessWidget {
   final AuthController _authController = Get.put(AuthController());
   AuthService _authService = AuthService();
+  final StateController _stateController = Get.put(StateController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kbackgroundColor,
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(
+              height: 60,
+            ),
             Padding(
-              padding: const EdgeInsets.all(32.0),
+              padding: const EdgeInsets.all(8.0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
                     'Create an Account',
                     style: TextStyle(
                       fontFamily: 'VarelaRound',
                       fontWeight: FontWeight.bold,
-                      fontSize: 20,
+                      fontSize: 18,
                     ),
                   ),
                 ],
@@ -193,6 +199,9 @@ class RegisterPage extends StatelessWidget {
                   style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
               ),
+            ),
+            SizedBox(
+              height: 60,
             ),
           ],
         ),

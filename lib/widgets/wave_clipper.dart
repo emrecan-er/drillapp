@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MyWaveClipper extends StatelessWidget {
-  const MyWaveClipper({super.key});
-
+  late Widget widget;
+  MyWaveClipper({required this.widget});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,7 +16,7 @@ class MyWaveClipper extends StatelessWidget {
               clipper: WaveClipper(),
               child: Container(
                 color: kMainColor,
-                height: 120,
+                height: 150,
               ),
             ),
           ),
@@ -24,8 +24,13 @@ class MyWaveClipper extends StatelessWidget {
             clipper: WaveClipper(),
             child: Container(
               color: kMainColor,
-              height: 110,
+              height: 140,
               width: Get.width,
+              child: Stack(
+                children: [
+                  widget,
+                ],
+              ),
             ),
           ),
         ],

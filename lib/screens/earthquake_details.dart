@@ -3,6 +3,7 @@ import 'package:deprem/constants/constants.dart';
 import 'package:deprem/controller/auth_controller.dart';
 import 'package:deprem/widgets/emergency_button.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -10,8 +11,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 final AuthController _authController = Get.put(AuthController());
 
 class EarthquakeDetails extends StatelessWidget {
-  final String mapUrl =
-      "https://www.google.com/maps/d/embed?mid=1mYwVJPDiasVkOpCo4qU0g5JvmANgaEM";
   late GoogleMapController mapController;
   late double lat;
   late double long;
@@ -58,181 +57,161 @@ class HelpButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 200,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         color: kMainColor,
       ),
       height: 40,
       child: TextButton(
-          onPressed: () {
-            showDialog(
-                context: context,
-                builder: ((context) {
-                  return AlertDialog(
-                    title: Text(
-                      'Do You Need Help ?',
-                      style: TextStyle(
-                        fontFamily: 'VarelaRound',
-                      ),
+        onPressed: () {
+          _authController.helpInfo.clear();
+          showDialog(
+              context: context,
+              builder: ((context) {
+                return AlertDialog(
+                  title: Text(
+                    'Do You Need Help ?',
+                    style: TextStyle(
+                      fontFamily: 'VarelaRound',
                     ),
-                    content: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Spacer(),
-                        EmergencyButtons(
-                          onPressed: () {
-                            showModalBottomSheet(
-                                context: context,
-                                builder: (context) {
-                                  return Container(
-                                    width: Get.width,
-                                    height: Get.height,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            'Your Address : ',
-                                            style: TextStyle(
-                                              fontFamily: 'VarelaRound',
-                                              color: Colors.grey,
-                                            ),
-                                          ),
-                                        ),
-                                        Spacer(),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            _authController
-                                                .currentUserAddress.value,
-                                            style: TextStyle(
-                                              fontFamily: 'VarelaRound',
-                                              color: Colors.black,
-                                              fontSize: 20,
-                                            ),
-                                          ),
-                                        ),
-                                        Spacer(),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: CircleAvatar(
-                                                backgroundColor: Colors.green,
-                                                child: IconButton(
-                                                  color: Colors.greenAccent,
-                                                  highlightColor:
-                                                      Colors.greenAccent, //
-                                                  onPressed: () {
-                                                    AwesomeDialog(
-                                                      context: context,
-                                                      dialogType:
-                                                          DialogType.success,
-                                                      animType:
-                                                          AnimType.rightSlide,
-                                                      headerAnimationLoop:
-                                                          false,
-                                                      title: 'Done',
-                                                      desc:
-                                                          'Your address shared with authorities',
-                                                      btnOkOnPress: () {},
-                                                      btnOkIcon: Icons.done,
-                                                      btnOkColor: Colors.green,
-                                                    ).show();
-                                                  },
-                                                  icon: Icon(
-                                                    Icons.done,
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: CircleAvatar(
-                                                backgroundColor: Colors.red,
-                                                child: IconButton(
-                                                  color: Colors.redAccent,
-                                                  highlightColor:
-                                                      Colors.redAccent, //
-                                                  onPressed: () {},
-                                                  icon: Icon(
-                                                    Icons.close,
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Spacer(),
-                                      ],
-                                    ),
-                                  );
-                                });
-                          },
-                          text: 'I Need House',
-                          iconData: Icons.house,
-                        ),
-                        EmergencyButtons(
-                          onPressed: () {},
-                          text: 'I Need Food',
-                          iconData: Icons.food_bank,
-                        ),
-                        EmergencyButtons(
-                          onPressed: () {},
-                          text: 'I Need Tent',
-                          iconData: Icons.emergency,
-                        ),
-                        Spacer(),
-                        Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Container(
-                            width: 200,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              color: Colors.green,
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: TextButton(
-                              onPressed: () {
-                                Get.snackbar(
-                                  'Thanks for Feedback',
-                                  'If you need help around your location you can get help from Bi\'Destek Page',
-                                  duration: Duration(
-                                    seconds: 10,
+                  ),
+                  content: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Spacer(),
+                      Container(
+                        width: Get.width,
+                        height: 250,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.blueAccent),
+                            borderRadius: BorderRadius.circular(8)),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                children: [
+                                  FaIcon(
+                                    FontAwesomeIcons.twitter,
+                                    color: Colors.lightBlue,
+                                    size: 16,
                                   ),
-                                  colorText: Colors.white,
-                                  backgroundColor: kMainColor,
-                                );
-                                Navigator.pop(context);
-                              },
-                              child: Text(
-                                'I\'m Fine',
-                                style: TextStyle(
-                                    fontFamily: 'VarelaRound',
-                                    color: Colors.white),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                    '@emrecannerr',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontFamily: 'VarelaRound',
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Obx(
+                                () => Text(
+                                  '#Help #Emergency #Earthquake \n\n' +
+                                      _authController.helpInfo.value
+                                          .toString() +
+                                      '\n\n' +
+                                      _authController.currentUserAddress.value,
+                                  style: TextStyle(fontFamily: 'VarelaRound'),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Container(
+                          width: 200,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            color: Colors.blueAccent,
+                            borderRadius: BorderRadius.circular(16),
                           ),
-                        )
-                      ],
-                    ),
-                  );
-                }));
-          },
-          child: Text(
-            'I Felt that Earthquake',
-            style: TextStyle(fontFamily: 'VarelaRound', color: Colors.white),
-          )),
+                          child: TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text(
+                              'Tweet',
+                              style: TextStyle(
+                                  fontFamily: 'VarelaRound',
+                                  color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ),
+                      EmergencyButtons(
+                        onPressed: () {
+                          _authController.helpInfo
+                              .add(_authController.needRescuers.value);
+                        },
+                        text: 'We need rescuers',
+                        iconData: Icons.emoji_people,
+                      ),
+                      EmergencyButtons(
+                        onPressed: () {
+                          _authController.helpInfo
+                              .add(_authController.needFood.value);
+                        },
+                        text: 'We need food',
+                        iconData: Icons.food_bank,
+                      ),
+                      EmergencyButtons(
+                        onPressed: () {
+                          _authController.helpInfo
+                              .add(_authController.needTent.value);
+                        },
+                        text: 'We need tent',
+                        iconData: Icons.emergency,
+                      ),
+                      Spacer(),
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Container(
+                          width: 200,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: Colors.green,
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: TextButton(
+                            onPressed: () {
+                              Get.snackbar(
+                                'Thanks for Feedback',
+                                'If you need help around your location you can get help from Bi\'Destek Page',
+                                duration: Duration(
+                                  seconds: 10,
+                                ),
+                              );
+                              Navigator.pop(context);
+                            },
+                            child: Text(
+                              'I\'m Fine',
+                              style: TextStyle(
+                                  fontFamily: 'VarelaRound',
+                                  color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }));
+        },
+        child: Text(
+          'I Felt that Earthquake',
+          style: TextStyle(fontFamily: 'VarelaRound', color: Colors.white),
+        ),
+      ),
     );
   }
 }

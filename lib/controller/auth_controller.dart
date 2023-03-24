@@ -12,4 +12,8 @@ class AuthController extends GetxController {
   var loggedInUserUid = ''.obs;
   var registerSurname = ''.obs;
   var currentUserAddress = ''.obs;
+  var helpInfo = [].obs;
+  var needRescuers = 'We need rescuers'.obs;
+  var needFood = 'We need food'.obs;
+  var needTent = 'We need tent'.obs;
 }

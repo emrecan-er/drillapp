@@ -84,7 +84,7 @@ class EmergencyPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              '*Düdüğe tıklamanız halinde yüksek frekanslı düdük sesi çalacaktır.',
+              '*If you click a whistle it beeps',
               style: TextStyle(
                 color: Colors.grey,
                 fontFamily: 'VarelaRound',
@@ -98,7 +98,7 @@ class EmergencyPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              '**Enkaz Altındayım butonuna tıkladığınızda konum bilgileriniz Twitter araclığıyla paylaşılacaktır.',
+              '**When you click I Need Help button,your address will be tweeted automaticly.',
               style: TextStyle(
                 color: Colors.grey,
                 fontFamily: 'VarelaRound',
@@ -107,7 +107,7 @@ class EmergencyPage extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 20,
+            height: 40,
           ),
         ],
       ),

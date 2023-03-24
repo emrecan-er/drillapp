@@ -1,5 +1,6 @@
 import 'package:deprem/constants/constants.dart';
 import 'package:deprem/screens/bi_destek/donation.dart';
+import 'package:deprem/screens/bi_destek/help_organizations.dart';
 import 'package:deprem/screens/bi_destek/jobs.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -58,6 +59,7 @@ class BiDestek extends StatelessWidget {
       ),
       backgroundColor: kbackgroundColor,
       appBar: AppBar(
+        elevation: 0,
         centerTitle: true,
         title: Text(
           'Bi\'Destek',
@@ -66,6 +68,7 @@ class BiDestek extends StatelessWidget {
             fontSize: 16,
           ),
         ),
+        toolbarHeight: 40,
         backgroundColor: kMainColor,
       ),
       body: Column(
@@ -102,23 +105,11 @@ class BiDestek extends StatelessWidget {
           Row(
             children: [
               BiDestekCard(
-                onPressed: () {},
-                iconData: FontAwesomeIcons.turkishLiraSign,
-                text: 'Money',
-              ),
-              BiDestekCard(
-                onPressed: () {},
-                iconData: FontAwesomeIcons.peopleLine,
-                text: 'Law',
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              BiDestekCard(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(HelpOrganizations());
+                },
                 iconData: Icons.help_center,
-                text: 'Help Organizations',
+                text: 'Help Locations',
               ),
             ],
           ),

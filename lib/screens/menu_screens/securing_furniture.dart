@@ -3,30 +3,58 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
-class BuildingInspection extends StatelessWidget {
-  const BuildingInspection({super.key});
+import '../../constants/constants.dart';
+
+class Securing extends StatelessWidget {
+  const Securing({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Container(
-              color: Colors.amber,
-              width: Get.width,
-              height: 300,
-              child: Image.asset(
-                'assets/deprem.jpg',
-                fit: BoxFit.fitHeight,
-                scale: 2,
+            AppBar(
+              title: Text(
+                'Securing Furnitures',
+                style: TextStyle(
+                  fontFamily: 'VarelaRound',
+                  fontSize: 15,
+                ),
               ),
+              elevation: 0,
+              centerTitle: true,
+              toolbarHeight: 40,
+              backgroundColor: kMainColor,
+            ),
+            Container(
+              width: Get.width,
+              height: 400,
+              color: Colors.amber,
+              child: Image.asset(
+                'assets/sec.png',
+                fit: BoxFit.cover,
+              ),
+            ),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    '3 min reading',
+                    style: TextStyle(
+                      fontFamily: 'VarelaRound',
+                      color: Colors.black45,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ],
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                'Building Inspection for Earthquakes',
+                'Securing Furnitures for Earthquakes',
                 style: TextStyle(
                   fontFamily: 'VarelaRound',
                   fontWeight: FontWeight.bold,
@@ -38,7 +66,7 @@ class BuildingInspection extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                'Earthquakes can happen anytime and anywhere, often with little or no warning. While we can\'t predict exactly when or where earthquakes will occur, we can take steps to prepare ourselves and our communities for when they do. One important step is to have our buildings inspected to ensure they are structurally sound and able to withstand the forces of an earthquake.',
+                'Securing furniture before an earthquake is essential to reduce the risk of injury and damage to your property. The Kahramanmaras earthquake in Turkey in 2023 is a reminder of how important it is to secure heavy furniture items such as bookshelves, dressers, and cabinets to the wall. Inspect your furniture regularly and have an emergency plan in place. By taking these simple steps, you can protect yourself and your loved ones during an earthquake.',
                 style: TextStyle(
                   fontFamily: 'VarelaRound',
                   fontSize: 16,
@@ -46,10 +74,13 @@ class BuildingInspection extends StatelessWidget {
                 textAlign: TextAlign.start,
               ),
             ),
+            SizedBox(
+              height: 20,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                'On February 6th, 2023, a 7.5 and 7.7 magnitude earthquake hit Kahramanmaras, Turkey, causing significant damage to buildings and leaving many people without homes. Although not as devastating as some past earthquakes, this event serves as a reminder of the importance of being prepared.',
+                '1- Identify heavy furniture items that could fall and cause harm.',
                 style: TextStyle(
                   fontFamily: 'VarelaRound',
                   fontSize: 16,
@@ -57,10 +88,13 @@ class BuildingInspection extends StatelessWidget {
                 textAlign: TextAlign.start,
               ),
             ),
+            SizedBox(
+              height: 20,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                'Building inspections are a critical aspect of earthquake preparedness. These inspections can identify potential weaknesses in a building\'s structure and provide recommendations for improvements. Depending on the severity of the issues found, improvements can range from minor repairs to major structural upgrades.',
+                '2- Choose an appropriate anchoring system based on the type of furniture and the wall material.',
                 style: TextStyle(
                   fontFamily: 'VarelaRound',
                   fontSize: 16,
@@ -68,10 +102,13 @@ class BuildingInspection extends StatelessWidget {
                 textAlign: TextAlign.start,
               ),
             ),
+            SizedBox(
+              height: 20,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                'Addressing these issues can help ensure that our buildings are better equipped to withstand earthquakes and protect their occupants. Additionally, inspections can have financial benefits, as buildings that have been inspected and deemed structurally sound may be more attractive to potential buyers or renters. Inspections can also identify issues before they become more severe, potentially saving building owners and occupants from costly repairs or reconstruction.',
+                '3- Install the anchoring system according to the manufacturer\'s instructions, ensuring that it is securely attached to the wall and the furniture.',
                 style: TextStyle(
                   fontFamily: 'VarelaRound',
                   fontSize: 16,
@@ -79,10 +116,13 @@ class BuildingInspection extends StatelessWidget {
                 textAlign: TextAlign.start,
               ),
             ),
+            SizedBox(
+              height: 20,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                'It\'s important to emphasize that building inspections should be conducted by qualified professionals, such as licensed structural engineers or architects. These experts have the necessary training and expertise to identify potential issues and recommend appropriate improvements.',
+                '4- Regularly check the anchoring system to ensure that it is still securely attached and that the furniture has not shifted or become loose.',
                 style: TextStyle(
                   fontFamily: 'VarelaRound',
                   fontSize: 16,
@@ -90,16 +130,22 @@ class BuildingInspection extends StatelessWidget {
                 textAlign: TextAlign.start,
               ),
             ),
+            SizedBox(
+              height: 20,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                'In summary, building inspections play a crucial role in earthquake preparedness. By identifying and addressing potential weaknesses in our buildings, we can better protect ourselves and our communities from the potentially catastrophic effects of earthquakes. The recent earthquake in Turkey underscores the importance of prioritizing building inspections and taking steps to be better prepared for future earthquakes.',
+                '5- Have an emergency plan in place for how to react during an earthquake and ensure that everyone in your household is aware of the plan.',
                 style: TextStyle(
                   fontFamily: 'VarelaRound',
                   fontSize: 16,
                 ),
                 textAlign: TextAlign.start,
               ),
+            ),
+            SizedBox(
+              height: 20,
             ),
           ],
         ),

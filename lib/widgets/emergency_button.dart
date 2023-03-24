@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class EmergencyButtons extends StatelessWidget {
   late IconData iconData;
   late String text;
+  bool isClicked = false;
   Function() onPressed;
   EmergencyButtons({
     required this.iconData,
@@ -12,12 +13,12 @@ class EmergencyButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: GestureDetector(
-        onTap: onPressed,
+    return GestureDetector(
+      onTap: onPressed,
+      child: Padding(
+        padding: const EdgeInsets.all(4.0),
         child: Container(
-          height: 50,
+          height: 30,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
@@ -26,10 +27,12 @@ class EmergencyButtons extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   iconData,
                   color: Colors.black54,
+                  size: 15,
                 ),
                 SizedBox(
                   width: 10,
@@ -37,7 +40,9 @@ class EmergencyButtons extends StatelessWidget {
                 Text(
                   text,
                   style: TextStyle(
-                      color: Colors.black54, fontFamily: 'VarelaRound'),
+                      color: Colors.black54,
+                      fontFamily: 'VarelaRound',
+                      fontSize: 13),
                 ),
               ],
             ),

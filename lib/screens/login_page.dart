@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:deprem/constants/constants.dart';
+import 'package:deprem/controller/state_controller.dart';
 import 'package:deprem/screens/home_page.dart';
 import 'package:deprem/screens/register_page.dart';
 import 'package:deprem/widgets/custom_form_field.dart';
@@ -17,16 +18,33 @@ import '../service/api/auth_service.dart';
 
 class LoginPage extends StatelessWidget {
   final AuthController _authController = Get.put(AuthController());
+  final StateController _stateController = Get.put(StateController());
   AuthService _authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: kbackgroundColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
-            MyWaveClipper(),
+            MyWaveClipper(
+              widget: Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    'drill app',
+                    style: TextStyle(
+                      letterSpacing: 2,
+                      color: kbackgroundColor,
+                      fontFamily: 'AdriaGrotesk',
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ),
+            ),
             SizedBox(
               height: 50,
             ),

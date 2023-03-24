@@ -103,13 +103,13 @@ class _LandingState extends State<LandingPage> {
                             elevation: 1,
                             sliderButtonIcon: Icon(
                               Icons.arrow_forward,
-                              size: 24,
+                              size: 20,
                               color: kMainColor,
                             ),
                             sliderButtonIconPadding: 10,
                             outerColor: kMainColor,
                             sliderButtonIconSize: 14,
-                            height: Get.height / 12,
+                            height: 50,
                             key: _key,
                             onSubmit: () {
                               Get.off(LoginPage());
@@ -119,7 +119,7 @@ class _LandingState extends State<LandingPage> {
                       : IconButton(
                           icon: Icon(
                             Icons.navigate_next,
-                            size: 50,
+                            size: 30,
                             color: kMainColor,
                           ),
                           onPressed: () {
@@ -130,7 +130,7 @@ class _LandingState extends State<LandingPage> {
                         ),
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 30,
                 )
               ],
             ),

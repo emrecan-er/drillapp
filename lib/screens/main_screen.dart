@@ -1,5 +1,5 @@
 import 'package:deprem/constants/constants.dart';
-import 'package:deprem/screens/life_triangle.dart';
+import 'package:deprem/screens/menu_screens/life_triangle.dart';
 import 'package:deprem/widgets/depremler.dart';
 import 'package:deprem/screens/emergency_page.dart';
 import 'package:flutter/material.dart';
