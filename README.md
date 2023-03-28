@@ -52,8 +52,9 @@ flutter run
 
 drill app tested by these people :
 
-- Şirket 1
-- Şirket 2
+
+- [@CeRBeR666](https://github.com/CeRBeR666) : A control algorithm is required when tweeting to prevent unnecessary use. Apart from these, the design of the application is quite good. I look forward to the next versions of the application.
+
 
   
 ## Technologies
@@ -61,7 +62,4 @@ drill app tested by these people :
 Flutter,
 Firebase,
 Google Maps
-
-  
-![Logo](https://raw.githubusercontent.com/emrecan-er/drillapp/main/screenshots/sized.png?token=GHSAT0AAAAAAB4UABUUR3QWTVX7CVXFQB7YZBC3VZQ)
 
