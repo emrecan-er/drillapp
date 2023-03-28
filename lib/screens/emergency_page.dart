@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-final player = AudioCache();
-
 class EmergencyPage extends StatelessWidget {
   final twitterApi = TwitterApi(
     client: TwitterClient(
@@ -80,7 +78,7 @@ class EmergencyPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              '*If you click a whistle it beeps',
+              '*If you click a whistle it makes sound',
               style: TextStyle(
                 color: Colors.grey,
                 fontFamily: 'VarelaRound',
