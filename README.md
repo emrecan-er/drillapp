@@ -45,7 +45,7 @@ flutter run
   
 ## Screenshots
 
-![Uygulama Ekran Görüntüsü](https://raw.githubusercontent.com/emrecan-er/drillapp/main/screenshots/Adsız.png?token=GHSAT0AAAAAAB4UABUUWBQDBAWCW4EUG276ZBC5JEA)
+![Uygulama Ekran Görüntüsü](https://github.com/emrecan-er/drillapp/blob/main/screenshots/Adsız.png)
 
   
 ## Feedbacks
