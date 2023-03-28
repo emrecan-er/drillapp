@@ -1,7 +1,9 @@
-
+<pre>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/emrecan-er/drillapp/main/screenshots/sized.png?token=GHSAT0AAAAAAB4UABUUUVWFIYGRG66VP7DYZBC4KQQ" />
+  <img src="https://raw.githubusercontent.com/emrecan-er/drillapp/main/screenshots/sized.png?token=GHSAT0AAAAAAB4UABUU2LBUSU2ZD522EKVYZBC47YQ" />
 </p>
+</pre>
+
 
 ## drill app - GDSC SOLUTION CHALLENGE 2023
 
@@ -43,13 +45,12 @@ flutter run
   
 ## Screenshots
 
-![Uygulama Ekran Görüntüsü](https://raw.githubusercontent.com/emrecan-er/drillapp/main/screenshots/Adsız.png?token=GHSAT0AAAAAAB4UABUUKXOIDAHKGQISV3NSZBC4MUA)
+![Uygulama Ekran Görüntüsü](https://raw.githubusercontent.com/emrecan-er/drillapp/main/screenshots/Adsız.png?token=GHSAT0AAAAAAB4UABUUMQ2BTX4SYTHOIKDSZBC47WQ)
 
   
 ## Feedbacks
 
 - [@CeRBeR666](https://github.com/CeRBeR666) : A control algorithm is required when tweeting to prevent unnecessary use. Apart from these, the design of the application is quite good. I look forward to the next versions of the application.
-- 
 - [@tugruldonmez](https://github.com/tugruldonmez) : It's a nice application to be used in times of disaster. I'm looking forward to the part that will finds to the potential life triangles.
 
   
