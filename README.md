@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="[https://raw.githubusercontent.com/emrecan-er/drillapp/main/screenshots/sized.png?token=GHSAT0AAAAAAB4UABUUKREDR6JNCL2MJPPYZBC4EPA](https://raw.githubusercontent.com/emrecan-er/drillapp/main/screenshots/sized.png?token=GHSAT0AAAAAAB4UABUUUVWFIYGRG66VP7DYZBC4KQQ)" />
+  <img src="https://raw.githubusercontent.com/emrecan-er/drillapp/main/screenshots/sized.png?token=GHSAT0AAAAAAB4UABUUUVWFIYGRG66VP7DYZBC4KQQ" />
 </p>
 
 ## drill app - GDSC SOLUTION CHALLENGE 2023
