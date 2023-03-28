@@ -60,7 +60,7 @@ class Drill extends StatelessWidget {
             child: Container(
               color: kMainColor,
               width: Get.width,
-              height: 500,
+              height: Get.height,
               child: Column(
                 children: [
                   CalendarDatePicker2(
@@ -198,7 +198,7 @@ class Drill extends StatelessWidget {
                 ),
               ),
               width: Get.width,
-              height: 420,
+              height: 200,
               child: Column(
                 children: [
                   Padding(

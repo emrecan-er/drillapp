@@ -4,9 +4,9 @@
 
     
 
-        android:label="deprem"
+        android:label="drill app"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
 
          <meta-data android:name="com.google.android.geo.API_KEY"
                android:value="AIzaSyDv28MVnVDDDSBnrbh2ECQHhuuRAi6VpXc"/>

@@ -101,7 +101,7 @@ class HelpButton extends StatelessWidget {
                                     width: 5,
                                   ),
                                   Text(
-                                    '@emrecannerr',
+                                    '@drill__app',
                                     style: TextStyle(
                                       fontSize: 12,
                                       fontFamily: 'VarelaRound',
