@@ -9,10 +9,10 @@ import 'package:get/get.dart';
 class EmergencyPage extends StatelessWidget {
   final twitterApi = TwitterApi(
     client: TwitterClient(
-      consumerKey: 'qp9oYLSMZttmRXVdOfXLc764o',
-      consumerSecret: 'F4VuI0GQ44Dr0S8W8zkzF0qYRXc1zGsIgNCBMb6cEJ8B1ukPsD',
-      token: '1291398145583263752-gAIH4xXaej4UKjLVOsnZtrNYgtasDd',
-      secret: 'UXHagLqFLOLzfRviSf85kUabBK0J4Hb7QchAWaUt3BV9P',
+      consumerKey: 'MYCONSUMERKEY',
+      consumerSecret: 'CONSUMERSECRET',
+      token: 'TOKEN',
+      secret: 'SECRET',
     ),
   );
   @override
