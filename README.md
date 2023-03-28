@@ -1,6 +1,6 @@
 <pre>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/emrecan-er/drillapp/main/screenshots/sized.png?token=GHSAT0AAAAAAB4UABUU44E3RMSQ3UKGZMU2ZBC5JFA" />
+  <img src="https://github.com/emrecan-er/drillapp/blob/main/screenshots/sized.png" />
 </p>
 <h1>drill app - GDSC Solution Challenge 2023 </h1>
 </pre>
