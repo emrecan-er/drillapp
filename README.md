@@ -50,9 +50,6 @@ flutter run
   
 ## Feedbacks
 
-drill app tested by these people :
-
-
 - [@CeRBeR666](https://github.com/CeRBeR666) : A control algorithm is required when tweeting to prevent unnecessary use. Apart from these, the design of the application is quite good. I look forward to the next versions of the application.
 
 
