@@ -21,7 +21,7 @@ With our application, you can track the latest earthquakes, easily share your ad
 1-Open the terminal and clone the repo.
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/emrecan-er/drillapp.git
 ```
 
 2-Please make sure you have flutter installed. If you do not, follow the steps from [here](https://docs.flutter.dev/get-started/install)
