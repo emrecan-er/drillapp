@@ -2,7 +2,7 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/emrecan-er/drillapp/main/screenshots/sized.png?token=GHSAT0AAAAAAB4UABUU2LBUSU2ZD522EKVYZBC47YQ" />
 </p>
-<h1>drill app - GDSC Solution Challenge </h1>
+<h1>drill app - GDSC Solution Challenge 2023 </h1>
 </pre>
 
 
