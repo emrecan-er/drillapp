@@ -137,6 +137,8 @@ class HelpButton extends StatelessWidget {
                           ),
                           child: TextButton(
                             onPressed: () {
+                              Get.snackbar('Error',
+                                  'The earthquake you felt should be at least 5.5 magnitude.');
                               Navigator.pop(context);
                             },
                             child: Text(

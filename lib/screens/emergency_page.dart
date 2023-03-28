@@ -12,8 +12,7 @@ class EmergencyPage extends StatelessWidget {
   final twitterApi = TwitterApi(
     client: TwitterClient(
       consumerKey: 'qp9oYLSMZttmRXVdOfXLc764o',
-      consumerSecret:
-          'F4VuI0GQ44Dr0S8W8zkzF0qYRXc1zGsIgNCBMb6cEJ8B1ukPsD', //I removed them because this code is public on GitHub
+      consumerSecret: 'F4VuI0GQ44Dr0S8W8zkzF0qYRXc1zGsIgNCBMb6cEJ8B1ukPsD',
       token: '1291398145583263752-gAIH4xXaej4UKjLVOsnZtrNYgtasDd',
       secret: 'UXHagLqFLOLzfRviSf85kUabBK0J4Hb7QchAWaUt3BV9P',
     ),
@@ -59,11 +58,8 @@ class EmergencyPage extends StatelessWidget {
                   backgroundColor: kMainColor,
                 ),
                 onPressed: () async {
-                  Get.snackbar(
-                    'This is working',
-                    'Normally my tweet bot tweets but i removed it because i will share this code public on GitHub for examination.',
-                    duration: Duration(seconds: 6),
-                  );
+                  Get.snackbar('We Can\'t Detect an Earthquake Near You',
+                      'The earthquake you felt should be at least 5.5 magnitude.');
                   try {
                     // Get the last 200 tweets from my home timeline
                     final homeTimeline =
