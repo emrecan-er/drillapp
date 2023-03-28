@@ -1,6 +1,6 @@
 <pre>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/emrecan-er/drillapp/main/screenshots/sized.png?token=GHSAT0AAAAAAB4UABUU2LBUSU2ZD522EKVYZBC47YQ" />
+  <img src="https://raw.githubusercontent.com/emrecan-er/drillapp/main/screenshots/sized.png?token=GHSAT0AAAAAAB4UABUU44E3RMSQ3UKGZMU2ZBC5JFA" />
 </p>
 <h1>drill app - GDSC Solution Challenge 2023 </h1>
 </pre>
@@ -45,7 +45,7 @@ flutter run
   
 ## Screenshots
 
-![Uygulama Ekran Görüntüsü](https://raw.githubusercontent.com/emrecan-er/drillapp/main/screenshots/Adsız.png?token=GHSAT0AAAAAAB4UABUUMQ2BTX4SYTHOIKDSZBC47WQ)
+![Uygulama Ekran Görüntüsü](https://raw.githubusercontent.com/emrecan-er/drillapp/main/screenshots/Adsız.png?token=GHSAT0AAAAAAB4UABUUWBQDBAWCW4EUG276ZBC5JEA)
 
   
 ## Feedbacks
