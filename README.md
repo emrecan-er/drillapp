@@ -22,13 +22,11 @@ With our application, you can track the latest earthquakes, easily share your ad
   git clone https://link-to-project
 ```
 
-2-Please make sure you have flutter installed. If you do not, follow the steps from here.
+2-Please make sure you have flutter installed. If you do not, follow the steps from [here](https://docs.flutter.dev/get-started/install)
 
 3- Enable the developer mode on your phone and connect it to your computer with the USB cable.
 
 4- Once you clone the repository Open the project in Vscode or android studio and in the terminal type:
-
-Gerekli paketleri yükleyin
 
 ```bash
   flutter doctor
@@ -51,7 +49,8 @@ flutter run
 ## Feedbacks
 
 - [@CeRBeR666](https://github.com/CeRBeR666) : A control algorithm is required when tweeting to prevent unnecessary use. Apart from these, the design of the application is quite good. I look forward to the next versions of the application.
-
+- 
+- [@tugruldonmez](https://github.com/tugruldonmez) : It's a nice application to be used in times of disaster. I'm looking forward to the part that will finds to the potential life triangles.
 
   
 ## Technologies
