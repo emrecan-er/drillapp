@@ -5,6 +5,8 @@
 <h1>drill app - GDSC Solution Challenge 2023 </h1>
 
 <h2>Demo video link : https://www.youtube.com/watch?v=9yB-hYXrkm4 </h2>
+
+<h2>Important : I removed API keys of Twitter and Google Maps,i uploaded full version to APK folder.</h2>
 </pre>
 
 
